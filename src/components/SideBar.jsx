@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, Home, Settings, CircleHelp, LogOut, UserPlus, History, PlusCircleIcon } from 'lucide-react';
+import { ChevronDown, ChevronUp, Home, Settings, CircleHelp, LogOut, UserPlus, History, PlusCircleIcon, ShoppingBagIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { SiStudyverse } from 'react-icons/si';
 import { FiMenu } from 'react-icons/fi'; // Import the menu icon
@@ -51,17 +51,20 @@ const Sidebar = () => {
         navigate('/history');
         break;
       case "CreateSupplier":
-        navigate('/createsupplier'); 
+        navigate('/supplier'); 
         break;
       case "addItem":
-        navigate('/createitem'); 
+        navigate('/item'); 
         break;
       case "Help":
-        navigate('/help'); 
+        
         break;
-      case "logout":
+        case "CreatePurchase":
+          navigate('/createpurchase')
+          break;
+      case "Logout":
         localStorage.clear()
-        navigate('/'); 
+        navigate('/login'); 
         break;
       default:
         break;
@@ -92,6 +95,7 @@ const Sidebar = () => {
             />
             <MenuItem icon={UserPlus} label="CreateSupplier" onClick={handleMenuItemClick} />
             <MenuItem icon={PlusCircleIcon} label="addItem" onClick={handleMenuItemClick} />
+            <MenuItem icon={ShoppingBagIcon} label="CreatePurchase" onClick={handleMenuItemClick} />
             <MenuItem icon={Settings} label="Settings" onClick={handleMenuItemClick} />
           </div>
         </div>

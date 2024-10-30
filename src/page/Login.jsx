@@ -20,8 +20,8 @@ const Login = () => {
       ></div>
         {/* Right section */}
         <div className='lg:w-1/2 w-full h-full flex justify-center items-center'>
-        <div className=' lg:w-9/12 w-11/12 shadow-lg rounded-lg'>
-        <form onSubmit={handleSubmit} className="bg-white  lg:p-14 p-8 rounded-lg shadow-md ">
+        <div className=' lg:w-9/12 w-11/12 shadow-lg md:shadow-none rounded-lg'>
+        <form onSubmit={handleSubmit} className="bg-white  lg:p-14 p-8 shadow-lg rounded-lg md:shadow-none ">
           <h2 className="text-2xl font-bold mb-6 text-center text-pretty text-secondary">Login</h2>
           <p className='lg:pr-4 lg:pt-4 lg:pb-2 text-sm lg:text-base pb-2'>Empower your decisions with knowledge. Every login is a step towards greater achievements.</p>
           <div className="mb-4">

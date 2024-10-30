@@ -3,6 +3,7 @@ import Sidebar from '../components/SideBar'
 import CountryDropdown from '../components/CountryDropdown';
 import axios from 'axios';
 import api from '../api/axiosInterceptor';
+import ListSupplier from '../components/ListSupplier';
 
 const CreateSupplier = () => {
     const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ const CreateSupplier = () => {
         email: '',
         status: 'Active', 
       });
-    
+    const [isOpen,setIsOpen]=useState(false)
       const handleChange = (e) => {
         const { name, value } = e.target;
         if (name.includes('.')) {
@@ -50,8 +51,14 @@ const CreateSupplier = () => {
             <Sidebar/>
         </div>
         <div className='w-full h-full overflow-y-auto'>
+          {isOpen?<ListSupplier setIsOpen={setIsOpen}/>:(
         <div className=" p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold text-secondary mb-6">Add Supplier</h2>
+          <div className="w-full flex justify-between items-center  p-4">
+    <h2 className="text-2xl font-bold text-secondary">Add Supplier</h2>
+    <button className="bg-secondary p-3 rounded-xl text-white hover:bg-secondary-dark transition-colors" onClick={() => setIsOpen(true)}>
+        Show Suppliers
+    </button>
+</div>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block  font-semibold mb-2">Supplier Name</label>
@@ -151,6 +158,7 @@ const CreateSupplier = () => {
         </button>
       </form>
     </div>
+    )}
         </div>
     </div>
   )

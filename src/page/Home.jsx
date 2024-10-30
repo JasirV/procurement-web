@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from '../components/SideBar';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, ArcElement, Title, Tooltip, Legend } from 'chart.js';
+import { useNavigate } from 'react-router-dom';
 
 ChartJS.register(CategoryScale, LinearScale, ArcElement, Title, Tooltip, Legend);
 
@@ -23,6 +24,7 @@ const centerTextPlugin = {
 };
 
 const Home = () => {
+  const navigate=useNavigate()
   const data = {
     labels: ['Suppliers', 'Items'],
     datasets: [
@@ -75,10 +77,10 @@ const Home = () => {
           </div>
           <div className="flex flex-col items-center mt-6  bg-white rounded-lg shadow p-4 ">
             <div className="w-full h-full flex justify-between items-center md:px-20">
-              <button className='md:p-2 border text-xs md:text-base p-1 bg-primary rounded-3xl hover:bg-secondary hover:text-white'>Create Supplier</button>
-              <button className='md:p-2 md:px-6 border text-xs md:text-base p-1 bg-primary rounded-3xl hover:bg-secondary hover:text-white'>Add Item</button>
-              <button className='md:p-2 border bg-primary text-xs md:text-base p-1 rounded-3xl hover:bg-secondary hover:text-white'>PurchseOrder</button>
-              <button className='md:p-2 md:px-7 border bg-primary text-xs md:text-base p-1 rounded-3xl hover:bg-secondary hover:text-white'>History</button>
+              <button onClick={()=>{navigate('/supplier')}} className='md:p-2 border text-xs md:text-base p-1 bg-primary rounded-3xl hover:bg-secondary hover:text-white'>Create Supplier</button>
+              <button onClick={()=>{navigate('/item')}} className='md:p-2 md:px-6 border text-xs md:text-base p-1 bg-primary rounded-3xl hover:bg-secondary hover:text-white'>Add Item</button>
+              <button onClick={()=>{navigate('/createpurchase')}} className='md:p-2 border bg-primary text-xs md:text-base p-1 rounded-3xl hover:bg-secondary hover:text-white'>PurchseOrder</button>
+              <button onClick={()=>{navigate('/history')}} className='md:p-2 md:px-7 border bg-primary text-xs md:text-base p-1 rounded-3xl hover:bg-secondary hover:text-white'>History</button>
             </div>
           </div>
         </div>
