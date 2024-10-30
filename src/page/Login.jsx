@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Img from '../assets/img1.jpg'
 import useLogin from '../hook/useLogin';
+import { setToken } from '../features/authSlice';
+import { useDispatch } from 'react-redux';
 const Login = () => {
+  const dispatch=useDispatch()
     const {
         formData,
         handleChange,
@@ -11,6 +14,7 @@ const Login = () => {
         error,
         data,
       } = useLogin();
+
   return (
     <div className='h-screen w-full flex overflow-hidden '>
         {/* left section */}

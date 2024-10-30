@@ -2,8 +2,10 @@ import { useState } from 'react';
 import api from '../api/axiosInterceptor';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-
+import { setToken } from '../features/authSlice';
+import { useDispatch } from 'react-redux';
 const useLogin = () => {
+  const dispatch=useDispatch()
   const [formData, setFormData] = useState({ Id: '', password: '' });
   const navigate = useNavigate();
   const loginMutation = useMutation({
@@ -12,6 +14,7 @@ const useLogin = () => {
       if (response.status === 200) {
         console.log(response.data)
         localStorage.setItem('token', response.data.token);
+        dispatch(setToken(response.data.token))
         navigate('/');
       }
     }

@@ -6,11 +6,20 @@ import CreateSupplier from './page/Supplier'
 import CreateItem from './page/Item'
 import History from './page/History'
 import CreatePurchase from './page/CreatePurchase'
-
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 function App() {
+const{token}=useSelector((data)=>data.auth)
+console.log(token)
 
   return (
-    <>
+    <> 
+    {!token?(
+      <>
+      <Login/>
+    </>
+    ):(
+      <>
       <Routes>
       <Route path='/login' element={<Login/>}/>
       <Route path='/' element={<Home/>}/>
@@ -20,6 +29,8 @@ function App() {
       <Route path='/createpurchase' element={<CreatePurchase/>}/>
      </Routes>
     </>
+    )}
+</>
   )
 }
 
