@@ -5,6 +5,7 @@ import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import api from '../api/axiosInterceptor';
 import Sidebar from '../components/SideBar';
+import Loading from '../components/Loading';
 
 const History = () => {
     const [purchases, setPurchases] = useState([]);
@@ -53,7 +54,9 @@ const History = () => {
         <Sidebar />
         <main className='w-full overflow-y-auto p-6'>
             {loading ? (
-                <p>Loading...</p>
+                <div className='h-full justify-center flex items-center'>
+                    <Loading/>
+                </div>
             ) : (
                 <>
                     <h2 className="text-2xl font-bold mb-4 text-secondary">Purchase History</h2>

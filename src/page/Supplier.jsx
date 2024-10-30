@@ -4,6 +4,7 @@ import CountryDropdown from '../components/CountryDropdown';
 import axios from 'axios';
 import api from '../api/axiosInterceptor';
 import ListSupplier from '../components/ListSupplier';
+import Loading from '../components/Loading';
 
 const CreateSupplier = () => {
     const [formData, setFormData] = useState({
@@ -20,6 +21,7 @@ const CreateSupplier = () => {
         status: 'Active', 
       });
     const [isOpen,setIsOpen]=useState(false)
+    const [isLoading,setIsLoading]=useState(false)
       const handleChange = (e) => {
         const { name, value } = e.target;
         if (name.includes('.')) {
@@ -38,11 +40,14 @@ const CreateSupplier = () => {
       };
       const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true)
         try {
           await api.post('/supplier', formData);
+          setIsLoading(false)
           alert('Supplier added successfully!');
         } catch (error) {
           console.error('Failed to add supplier:', error);
+          setIsLoading(false)
         }
       };
   return (
@@ -51,6 +56,10 @@ const CreateSupplier = () => {
             <Sidebar/>
         </div>
         <div className='w-full h-full overflow-y-auto'>
+          {isLoading&&
+          <div className='w-full h-full flex justify-center items-center'>
+            <Loading/>
+            </div>}
           {isOpen?<ListSupplier setIsOpen={setIsOpen}/>:(
         <div className=" p-6 bg-white shadow-lg rounded-lg">
           <div className="w-full flex justify-between items-center  p-4">

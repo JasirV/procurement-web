@@ -3,6 +3,7 @@ import Img from '../assets/img1.jpg'
 import useLogin from '../hook/useLogin';
 import { setToken } from '../features/authSlice';
 import { useDispatch } from 'react-redux';
+import Loading from '../components/Loading';
 const Login = () => {
   const dispatch=useDispatch()
     const {
@@ -18,6 +19,11 @@ const Login = () => {
   return (
     <div className='h-screen w-full flex overflow-hidden '>
         {/* left section */}
+        {isLoading&&
+        <div className='w-full flex justify-center items-center h-full'>
+          <Loading/>
+        </div>
+}
         <div
         className="w-1/2 h-full bg-cover bg-center hidden lg:flex"
         style={{ backgroundImage: `url(${Img})` }}
